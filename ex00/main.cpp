@@ -6,29 +6,55 @@
 #include "WrongCat.hpp"
 
 
-int main()
-{
-    std::cout << "\33[32m------ Example ------\33[0m" << std::endl;
-    std::cout << "\33[3m";
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
-    std::cout << "\33[0m";
-    std::cout << "\33[5m\33[31m------ Wrong example ------\33[0m" << std::endl;
-    std::cout << "\33[2m";
-    const WrongAnimal* w = new WrongCat();
-    w->makeSound(); //will output the WrongAnimal sound!
-    std::cout << "\33[0m";
 
-    delete meta;
-    delete j;
-    delete i;
-    delete w;
-    
-    return 0;
+int	main(void) 
+{
+	std::cout << "\n\33[32m----Animal, Dog and Cat construct----\33[0m" << std::endl;
+    std::cout << "\33[3m";
+	Animal generic;
+	Animal const*		meta = new Animal();
+	Animal const*		d = new Dog(); //Dog is an Animal during the compilation
+	Animal const*		c = new Cat(); //Cat is an Animal during the compilation
+	Animal const&		b = Cat();
+
+	std::cout << "\n\33[32m----Animal, Dog and Cat test----\33[0m" << std::endl;
+	std::cout << "Animal is a: " << meta->getType() << " " << std::endl;
+	std::cout << "Dog is a: " << d->getType() << " " << std::endl;
+	std::cout << "Cat is a: " << c->getType() << " " << std::endl;
+	generic.makeSound();
+	meta->makeSound();
+	d->makeSound(); 
+	c->makeSound();
+	b.makeSound();
+
+	std::cout << "\n\33[32m----Animal, Dog and Cat destruct----\33[0m" << std::endl;
+	delete(d);
+	delete(c);
+	delete(meta);
+
+	std::cout << "\n\33[5m\33[31m-----------------------Wrong Example-------------------------\33[0m" << std::endl;
+	std::cout << "\n\33[31m----Wrong Animal and Wrong Cat construct----\33[0m" << std::endl;
+    std::cout << "\33[2m";
+
+	WrongAnimal const*	wrongMeta = new WrongAnimal();
+	WrongAnimal const*	wrongC = new WrongCat();
+
+	std::cout << "\n\33[31m----Wrong Animal and Wrong Cat test ----\33[0m" << std::endl;
+	std::cout << "WrongAnimal is a: " << wrongMeta->getType() << std::endl;
+	std::cout << "WrongCat is a: " << wrongC->getType() << std::endl;
+	wrongMeta->makeSound();
+	wrongC->makeSound();
+
+	std::cout << "\n\\33[31m----Wrong Animal and Wrong Cat destruct----\33[0m" << std::endl;
+	delete(wrongMeta);
+	delete(wrongC);
+
+	std::cout << "\n\33[31m----Object slicing----\33[0m" << std::endl;
+	Animal const	a = Dog();
+	a.makeSound();
+
+	std::cout << "\n\33[31m----Destruct stack-allocated objects----\33[0m" << std::endl;
+
+	return (0);
 }
+

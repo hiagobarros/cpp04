@@ -5,16 +5,17 @@
 // #include "WrongCat.hpp"
 
 int	main(void)
-{	
-	std::cout << "\n----Basic test----" << std::endl;
-	Animal const* d = new Dog();
-	Animal const* c = new Cat();
+{
 
-	std::cout << "\n----Destruct heap allocated objects----" << std::endl;
-	delete(d);
-	delete(c);
+	std::cout << "\33[32m***********OBJs heap CONSTRUCT***********\33[0m" << std::endl;
+	Animal const* dog = new Dog();
+	Animal const* cat = new Cat();
 
-	std::cout << "\n----Array test----" << std::endl;
+	std::cout << "\33[32m***********DESTRUCT heap OBJs***********\33[0m" << std::endl;
+	delete(dog);
+	delete(cat);
+
+	std::cout << "\33[32m***********ARRAY OBJs***********\33[0m" << std::endl;
 	int const	arraySize = 4;
 	Animal const* animal[arraySize];
 
@@ -22,48 +23,48 @@ int	main(void)
 	{
 		if (i < arraySize / 2)
 		{
-			std::cout << i << std::endl;
+			std::cout<<"\33[35mindex:\33[0m"<<i<<std::endl;
 			animal[i] = new Dog();
 		}
 		else
 		{
-			std::cout << i << std::endl;
+			std::cout <<"\33[35mindex:\33[0m"<< i << std::endl;
 			animal[i] = new Cat();
 		}
 	}
 
-	std::cout << "\n----Make sound test----" << std::endl;
+	std::cout << "\33[32m***********SOUND TEST***********\33[0m" << std::endl;
 	for (int i = 0; i < arraySize; i++)
 	{
-		std::cout << i << std::endl;
+		std::cout <<"\33[35mindex:\33[0m"<< i << std::endl;
 		animal[i]->makeSound();
 	}
 
-	std::cout << "\n----Destruct array----" << std::endl;
+	std::cout << "\33[32m***********DESTRUCT ARRAY***********\33[0m" << std::endl;
 	for (int i = 0; i < arraySize; i++)
 	{
-		std::cout << i << std::endl;
+		std::cout <<"\33[35mindex:\33[0m"<< i << std::endl;
 		delete(animal[i]);
 	}
 
-	std::cout << "\n----Deep copy test----" << std::endl;
-	Cat	grumpy;
-	grumpy.setIdea(0, "Frown at people");
-	Cat	grumpyCopy(grumpy);
-	std::cout << "***Original idea: " << grumpy.getIdea(0) << " -> " << grumpy.getBrainPtr() << std::endl;
-	std::cout << "***Copy idea: " << grumpyCopy.getIdea(0) << " -> " << grumpyCopy.getBrainPtr() << std::endl;
-	grumpyCopy.setIdea(0, "Hiss at people");
-	std::cout << "***Modified copy idea: " << grumpyCopy.getIdea(0) << " -> " << grumpyCopy.getBrainPtr() << std::endl;
-	std::cout << "***Original idea: " << grumpy.getIdea(0) << " -> " << grumpy.getBrainPtr() << std::endl;
+	std::cout << "\33[32m***********DEEP COPY TEST***********\33[0m" << std::endl;
+	Cat	meowth;
+	meowth.setIdea(0, "MEOWTH idea: take the pikachu");
+	Cat	meowthCopy(meowth);
+	std::cout << "***Original idea: " << meowth.getIdea(0) << " -> " << meowth.getBrainPtr() << std::endl;
+	std::cout << "***Copy idea: " << meowthCopy.getIdea(0) << " -> " << meowthCopy.getBrainPtr() << std::endl;
+	meowthCopy.setIdea(0, "MEOWTH idea: When I said I wanted to be on top... I didn't mean on top of a balloon about to explode!");
+	std::cout << "*Modified copy idea: " << meowthCopy.getIdea(0)<< " -> " << meowthCopy.getBrainPtr() << std::endl;
+	std::cout << "*Original idea: " << meowth.getIdea(0) << " -> " << meowth.getBrainPtr() << std::endl;
 
-	std::cout << "\n----Busy mind test----" << std::endl;
-	Dog	milo;
+	std::cout << "\33[32m***********THINKING... TEST***********\33[0m" << std::endl;
+	Dog	arcanine;
 	for (int i = 0; i < 100; i++)
-		milo.setIdea(i, "Squirrel!");
+		arcanine.setIdea(i, "Fire Blast!");
 	for(int i = 0; i < 100; i++)
-		std::cout << "Milo's idea " << i << ": " << milo.getIdea(i) << std::endl;
+		std::cout << "arcanine's idea " << i <<": " << arcanine.getIdea(i) << std::endl;
 
-	std::cout << "\n----Destruct stack-allocated objects----" << std::endl;
+	std::cout << "\33[32m***********OBJs stack DESTRUCT***********\33[0m" << std::endl;
 
 	return (0);
 }
