@@ -1,22 +1,29 @@
+
 #ifndef ANIMAL_HPP
 #define ANIMAL_HPP
 
 #include <iostream>
 #include <string>
 
-class Animal {
-protected:
-    std::string type;
 
-public:
-    Animal();                              // Default constructor
-    Animal(const std::string &type);       // Param constructor
-    Animal(const Animal &other);           // Copy constructor
-    Animal &operator=(const Animal &other);// Copy assignment operator
-    virtual ~Animal();                     // Virtual destructor
+class Animal
+{
+    protected:
+        std::string type;
+        
+    public:
+        Animal(void);
+        Animal(const Animal &other);
+        Animal& operator=(const Animal &other);
+        virtual~Animal();
 
-    virtual void makeSound() const;        // Virtual for polymorphism
-    std::string getType() const;
+        virtual void makeSound() const;
+
+    std::string getType() const ;
+	virtual void		setIdea(int index, std::string const& idea);
+	virtual std::string	getIdea(int index) const;
+    
+
 };
 
 #endif

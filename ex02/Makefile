@@ -6,7 +6,7 @@ NAME = ex02
 CC = c++
 CFLAGS =  -std=c++98
 CFLAGS += -Wall -Wextra -Werror
-CFILES = main.cpp 
+CFILES = main.cpp AAnimal.cpp Brain.cpp Cat.cpp Dog.cpp
 OBJS_DIR = ./objs/
 SRC_DIR = ./src/
 OBJS = ${addprefix ${OBJS_DIR}, ${CFILES:.cpp=.o}}

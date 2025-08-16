@@ -3,7 +3,7 @@
 
 Cat::Cat() : Animal()
 {
-    std::cout << "Cat constructor called 🐱" << std::endl;
+    std::cout << "Cat default constructor called 🐱" << std::endl;
     type = "Cat";
 }
 
@@ -22,11 +22,6 @@ void Cat::makeSound() const
 {
     std::cout << "Meow! 🐱" << std::endl;
 }
-
-//std::string Cat::getType() const {
-//    return type;
-//}
-
 
 Cat::~Cat(){
     std::cout << "Cat destructor called 🐱" << std::endl;

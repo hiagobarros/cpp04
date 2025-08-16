@@ -15,6 +15,10 @@ public:
     ~Cat();
 
     void makeSound() const;
+
+    void			setIdea(int index, std::string const& idea);  //overrride
+	std::string		getIdea(int index) const;
+	Brain const*	getBrainPtr(void) const;
 };
 
 #endif
